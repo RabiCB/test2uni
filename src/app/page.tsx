@@ -5,8 +5,20 @@ import { GraduationCap, Globe, BookOpen, Users, Star, TrendingUp, CheckCircle, A
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-
+import { Metadata } from "next"
+export const metadata: Metadata = {
+  title: 'Test2Uni - Your Path to International Education',
+  verification:{
+    google:"EGqlIIK13bo6vgrndF5kT3HDjEDWtEDpoyvbFr5yYDE"
+  },
+  description: 'Prepare for IELTS, PTE, TOEFL, and more while discovering the perfect university abroad. Your journey to international education starts here.',
+}
+ 
 export default function HomePage() {
+
+
+ 
+
 
 
   return (
