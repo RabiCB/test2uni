@@ -6,10 +6,31 @@ import { GraduationCap, Globe, BookOpen, Users, Star, TrendingUp, CheckCircle, A
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Metadata } from "next"
+import Header from "@/components/Navbar/header"
 export const metadata: Metadata = {
   title: 'Test2Uni - Your Path to International Education',
   verification:{
     google:"EGqlIIK13bo6vgrndF5kT3HDjEDWtEDpoyvbFr5yYDE"
+  },
+  openGraph:{
+    images:[
+      {
+         url:'/images/banner.png',
+          width:1200,
+          height:630,
+          alt:'Test2Uni - Your Path to International Education',
+      }
+    ]
+  },
+  twitter:{
+    images:[
+      {
+        url:'/images/banner.png',
+        width:1200,
+        height:630,
+        alt:'Test2Uni - Your Path to International Education',
+      }
+    ]
   },
   description: 'Prepare for IELTS, PTE, TOEFL, and more while discovering the perfect university abroad. Your journey to international education starts here.',
 }
@@ -23,56 +44,11 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
-      <header className="border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <GraduationCap className="h-8 w-8 text-primary" />
-              <h1 className="text-2xl font-bold text-foreground">Test2Uni</h1>
-            </div>
-
-            {/* Navigation Menu */}
-            <nav className="hidden md:flex items-center gap-6">
-              <a
-                href="#features"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Features
-              </a>
-              <a
-                href="#universities"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Universities
-              </a>
-              <a
-                href="#testimonials"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Success Stories
-              </a>
-              <a
-                href="#pricing"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Pricing
-              </a>
-              <Button variant="outline" size="sm">
-                Sign In
-              </Button>
-            </nav>
-
-            {/* Mobile menu button */}
-            <Button variant="ghost" size="sm" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </header>
+      {/* <Header/> */}
 
       <main>
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-12 lg:py-20">
+        <section className="py-12 lg:py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             {/* Left side - Hero content */}
             <div className="space-y-8">
@@ -94,7 +70,7 @@ export default function HomePage() {
                   <div className="text-sm text-muted-foreground">Students</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-secondary">1000+</div>
+                  <div className="text-2xl font-bold text-primary">1000+</div>
                   <div className="text-sm text-muted-foreground">Universities</div>
                 </div>
                 <div className="text-center">
@@ -389,7 +365,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="pricing" className="py-20 bg-card/30">
+        {/* <section id="pricing" className="py-20 bg-card/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Choose Your Plan</h2>
@@ -488,7 +464,7 @@ export default function HomePage() {
               </Card>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="py-20">
           <div className="container mx-auto px-4">
