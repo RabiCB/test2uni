@@ -79,7 +79,7 @@ export function AuthForm({ onAuthSuccess }: AuthFormProps) {
       <Card className="w-full max-w-md mx-auto">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Welcome to Test2Uni!</CardTitle>
-          <CardDescription>Let's personalize your experience</CardDescription>
+          <CardDescription>Let{`'`}ss personalize your experience</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">

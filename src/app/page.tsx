@@ -170,7 +170,7 @@ export default function HomePage() {
                   <div className="flex -space-x-2">
                     <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center">
                       <span className="text-xs font-semibold text-primary">S</span>
-                    </div>
+                    </div>~
                     <div className="w-8 h-8 rounded-full bg-secondary/20 border-2 border-background flex items-center justify-center">
                       <span className="text-xs font-semibold text-secondary">R</span>
                     </div>
