@@ -1,4 +1,4 @@
 export const urls={
-    server:"http://localhost:5000",
+    server:"https://test2unibackend-production.up.railway.app",
     localhost:"http://localhost:3000/api/universities",
 }
