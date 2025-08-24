@@ -3,19 +3,10 @@ import UniversityDatabase from "@/components/university-database"
 import { hitServerApi } from "@/lib/useServerApi"
 import Link from "next/link"
 import type { Metadata } from "next"
-import ExampleClientComponent from "@/components/filter"
 
 export const metadata: Metadata = {
   title: "Universities - Explore & Sort",
   description: "Browse universities with sorting and pagination",
-  openGraph: {
-    title: "Universities - Explore & Sort",
-    description: "Browse universities with sorting and pagination",
-  },
-  twitter: {
-    title: "Universities - Explore & Sort",
-    description: "Browse universities with sorting and pagination",
-  },
 }
 
 type Props = {
@@ -25,48 +16,35 @@ type Props = {
   }
 }
 
-export default async function UniversitiesPage({
-searchParams,
-}
-:{
-  searchParams:Promise<{page: number}>}) {
-  
-    const {page }=await searchParams
+export default async function UniversitiesPage({ searchParams }: Props) {
+  // ✅ Parse page number safely
+  const page = Number(searchParams?.page) || 1
+  const sortBy = searchParams?.sort || "name_asc"
 
   // Fetch data from server
   const data = await hitServerApi(`/api/universities?page=${page}`)
-  console.log(data)
   const universities = data?.universities ?? []
-  const totalPages = data?.totalPages ?? 1 // Changed from data?.pagination?.totalPages
-  const isNextPage = Number(page) < totalPages
+  const totalPages = data?.pagination?.totalPages ?? 1
+  const isNextPage = page < totalPages
 
-  // Generate page numbers for pagination
+  // ✅ Page number generator
   const getPageNumbers = () => {
-    const pageNumbers = []
-    pageNumbers.push(1)
-    if (page > 3) pageNumbers.push("...")
-    for (let i = Math.max(2, page - 1); i <= Math.min(totalPages - 1, page + 1); i++) {
-      pageNumbers.push(i)
+    const pageNumbers: (number | string)[] = []
+    const delta = 2
+
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= page - delta && i <= page + delta)) {
+        pageNumbers.push(i)
+      } else if (pageNumbers[pageNumbers.length - 1] !== "...") {
+        pageNumbers.push("...")
+      }
     }
-    if (page < totalPages - 2) pageNumbers.push("...")
-    if (!pageNumbers.includes(totalPages)) pageNumbers.push(totalPages)
     return pageNumbers
   }
-
-const handleSortPageChange=()=>{
-  console.log("ss")
-}
-
-const sortBy = "name_asc"
- // Default sorting
-
-  const nextPage = page + 1
-  const prevPage = page - 1
 
   return (
     <section className="px-4 py-8">
       <h1 className="text-2xl font-bold mb-4">Universities</h1>
-      {/* <ExampleClientComponent/> */}
 
       {/* Sorting Controls */}
       <div className="flex gap-4 mb-6">
@@ -76,36 +54,47 @@ const sortBy = "name_asc"
         >
           Name Asc
         </Link>
-       
+        <Link
+          href={`/universities/?page=1&sort=ranking_desc`}
+          className={`px-3 py-1 rounded ${sortBy === "ranking_desc" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+        >
+          Ranking Desc
+        </Link>
       </div>
 
-      {/* University List (Child component only receives data) */}
+      {/* University List */}
       <UniversityDatabase data={universities} />
 
       {/* Pagination */}
       <div className="flex items-center justify-center gap-4 mt-8">
         {page > 1 && (
-          <Link href={`/universities/?page=${prevPage}`}>
+          <Link href={`/universities/?page=${page - 1}&sort=${sortBy}`}>
             <button className="px-4 py-2 bg-gray-300 rounded">Prev</button>
           </Link>
         )}
 
         <div className="flex gap-2">
-          {getPageNumbers().map((num, idx) => (
-            <Link key={idx} href={`/universities/?page=${num}`}>
-              <span
-                className={`px-3 py-1 rounded cursor-pointer ${
-                  num === page ? "bg-blue-600 text-white" : "bg-gray-200"
-                }`}
-              >
-                {num}
+          {getPageNumbers().map((num, idx) =>
+            num === "..." ? (
+              <span key={idx} className="px-3 py-1">
+                ...
               </span>
-            </Link>
-          ))}
+            ) : (
+              <Link key={idx} href={`/universities/?page=${num}`}>
+                <span
+                  className={`px-3 py-1 rounded cursor-pointer ${
+                    num === page ? "bg-blue-600 text-white" : "bg-gray-200"
+                  }`}
+                >
+                  {num}
+                </span>
+              </Link>
+            )
+          )}
         </div>
 
         {isNextPage && (
-          <Link href={`/universities/?page=${nextPage}${handleSortPageChange()}`}>
+          <Link href={`/universities/?page=${page + 1}`}>
             <button className="px-4 py-2 bg-gray-300 rounded">Next</button>
           </Link>
         )}

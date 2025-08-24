@@ -76,7 +76,7 @@ const Page = async({
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
               <img
-                src={selectedUniversity.image || "/placeholder.svg"}
+                src={"/images/unidefault.jpg"}
                 alt={selectedUniversity.name}
                 className="w-full h-64 object-cover rounded-lg"
               />
