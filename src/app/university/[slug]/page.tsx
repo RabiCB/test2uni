@@ -11,8 +11,8 @@ const getUniversity = cache(async (slug: string) => {
   return hitServerApi(`/api/universities/${slug}`)
 })
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = params
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
   const {university:uni} = await getUniversity(slug)
   return {
     title: `${uni.name} - Test2Uni`,
@@ -45,8 +45,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-const Page = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params
+const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params
   const { university: selectedUniversity } = await getUniversity(slug)
 
   return (
