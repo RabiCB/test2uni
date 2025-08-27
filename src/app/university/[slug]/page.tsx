@@ -6,9 +6,9 @@ import { Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card'
 import { hitServerApi } from '@/lib/useServerApi'
 import { formatDateDMY } from '@/lib/utils'
 import { MapPin, Award, Users, BookmarkIcon,  Clock, ExternalLink, Calendar } from 'lucide-react'
-import Link from 'next/link'
 
-import React, { use } from 'react'
+
+import React from 'react'
 
 const Page = async({
   params,

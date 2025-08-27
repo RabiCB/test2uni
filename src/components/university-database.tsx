@@ -44,19 +44,7 @@ export default function UniversityDatabase({data}:{
   return (
     <div className="min-h-screen bg-background">
       
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">Universities</h1>
-              <p className="text-muted-foreground">Discover your perfect university abroad</p>
-            </div>
-            <Badge variant="secondary" className="bg-primary/10 text-primary">
-              {universities.length} Universities
-            </Badge>
-          </div>
-        </div>
-      </header>
+      
 
       <main className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
