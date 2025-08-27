@@ -25,7 +25,7 @@ function formatDateDMY(isoDate:string) {
 }
 
 
-console.log(formatDateDMY("2025-06-15T00:00:00.000Z")); // "15/06/2025"
+
 
 
 export default function UniversityDatabase({data}:{

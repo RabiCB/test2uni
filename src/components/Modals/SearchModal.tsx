@@ -15,8 +15,7 @@ const SearchModalRoot = () => {
 
 
 
-  console.log(universities)
-  // fetch universities with delay (debounce)
+  
   useEffect(() => {
     if (!searchQuery) {
       setUniversities([]);
