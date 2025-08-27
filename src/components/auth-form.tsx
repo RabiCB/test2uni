@@ -63,8 +63,7 @@ export function AuthForm({ onAuthSuccess }: AuthFormProps) {
     if (isSignUp) {
       setShowOnboarding(true)
     } else {
-      // Handle sign in
-      console.log("Sign in:", formData)
+    
       onAuthSuccess?.()
     }
   }

@@ -120,3 +120,11 @@
     @apply bg-background text-foreground;
   }
 }
+.bootstrap-scope {
+  all: initial;
+  font-family: inherit;
+}
+.bootstrap-scope * {
+  all: unset;
+  display: revert;
+}

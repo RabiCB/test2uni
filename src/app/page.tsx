@@ -5,35 +5,53 @@ import { GraduationCap, Globe, BookOpen, Users, Star, TrendingUp, CheckCircle, A
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Metadata } from "next"
+
 import Header from "@/components/Navbar/header"
+
+import type { Metadata } from "next"
+
 export const metadata: Metadata = {
-  title: 'Test2Uni - Your Path to International Education',
-  verification:{
-    google:"EGqlIIK13bo6vgrndF5kT3HDjEDWtEDpoyvbFr5yYDE"
-  },
-  openGraph:{
-    images:[
+  title: "Test2Uni - Explore Top Universities Worldwide",
+  description:
+    "Test2Uni helps you discover and compare universities worldwide with rankings, tuition fees, programs, and admission details.",
+  keywords: [
+    "universities",
+    "study abroad",
+    "college rankings",
+    "education",
+    "Test2Uni",
+  ],
+  openGraph: {
+    title: "Test2Uni - Explore Top Universities Worldwide",
+    description:
+      "Browse global universities with detailed insights on programs, tuition, and admission deadlines.",
+    url: "https://test2uni.com", // replace with your real domain
+    siteName: "Test2Uni",
+    images: [
       {
-         url:'/images/banner.png',
-          width:1200,
-          height:630,
-          alt:'Test2Uni - Your Path to International Education',
-      }
-    ]
+        url: "https://test2uni.com/images/banner.png", // put a real OG image
+        width: 1200,
+        height: 630,
+        alt: "Test2Uni - University Explorer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
-  twitter:{
-    images:[
-      {
-        url:'/images/banner.png',
-        width:1200,
-        height:630,
-        alt:'Test2Uni - Your Path to International Education',
-      }
-    ]
+  twitter: {
+    card: "summary_large_image",
+    title: "Test2Uni - Explore Top Universities Worldwide",
+    description:
+      "Discover universities across the world with rankings, tuition, and program info.",
+    images: ["https://test2uni.com/images/banner.png"], 
   },
-  description: 'Prepare for IELTS, PTE, TOEFL, and more while discovering the perfect university abroad. Your journey to international education starts here.',
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    
+  },
 }
+
  
 export default function HomePage() {
 

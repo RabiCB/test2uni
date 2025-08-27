@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "../ui/button"
-import { GraduationCap, Menu, ChevronDown, X } from "lucide-react"
+import { GraduationCap, Menu, ChevronDown, X, SearchIcon } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import {
@@ -11,9 +11,14 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from "../ui/dropdown-menu"
+import SearchModal from "../Modals/SearchModal"
+import useModalStore from "@/ContextMangementStore/useModal"
+import { useAppContext } from "@/AppContext/AppContextProvider"
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+const  {OpenSearchModal,handleOpenSearchModal}=useAppContext()
 
   return (
     <header className="border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-40">
@@ -89,28 +94,22 @@ const Header = () => {
             >
               Features
             </a>
+           
             <Link
               href="/universities"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Universities
             </Link>
-            <a
-              href="#testimonials"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Success Stories
-            </a>
-            <a
-              href="#pricing"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Pricing
-            </a>
-            <Button variant="outline" size="sm">
+           
+           
+            <Button variant="default" size="sm">
               Sign In
             </Button>
-          </nav>
+             <Button onClick={handleOpenSearchModal} variant="outline">
+              <SearchIcon/>
+            </Button>
+          </nav>  
 
           <Button
             variant="ghost"
@@ -218,8 +217,11 @@ const Header = () => {
                 </div>
               </div>
             </nav>
+            
           </div>
         )}
+
+        
       </div>
     </header>
   )

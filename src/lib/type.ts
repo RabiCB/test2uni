@@ -22,4 +22,10 @@ export type University = {
   website: string
   bookmarked: boolean
   image?: string
+  updatedAt:string
+}
+
+
+interface PageProps {
+  searchParams: { [key: string]: string | string[] | undefined }
 }
