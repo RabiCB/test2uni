@@ -1,15 +1,11 @@
 // app/universities/page.tsx
 import UniversityDatabase from "@/components/university-database"
 import { hitServerApi } from "@/lib/useServerApi"
-import Link from "next/link"
-import type { Metadata } from "next"
+
 import Pagination from "@/components/Pagination"
 import { PageProps } from "../../../.next/types/app/page"
 
-export const metadata: Metadata = {
-  title: "Universities - Explore & Sort",
-  description: "Browse universities with sorting and pagination",
-}
+
 
 type Props = {
   searchParams?: {

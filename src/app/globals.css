@@ -128,3 +128,25 @@
   all: unset;
   display: revert;
 }
+
+@keyframes progress {
+  0% {
+    left: -50%;
+    width: 50%;
+  }
+  50% {
+    left: 25%;
+    width: 75%;
+  }
+  100% {
+    left: 100%;
+    width: 50%;
+  }
+}
+
+.animate-progress {
+  position: absolute;
+  height: 100%;
+  background-color: #3b82f6; /* Tailwind blue-500 */
+  animation: progress 1.5s infinite ease-in-out;
+}
