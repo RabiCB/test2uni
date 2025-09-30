@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  verification:{
+    google:"EGqlIIK13bo6vgrndF5kT3HDjEDWtEDpoyvbFr5yYDE"
+  },
   twitter: {
     card: "summary_large_image",
     title: "Test2Uni - Explore Top Universities Worldwide",
