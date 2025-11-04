@@ -102,10 +102,12 @@ const  {OpenSearchModal,handleOpenSearchModal}=useAppContext()
               Universities
             </Link>
            
-           
+           <Link href={"/login"}>
             <Button variant="default" size="sm">
               Sign In
             </Button>
+           </Link>
+           
              <Button onClick={handleOpenSearchModal} variant="outline">
               <SearchIcon/>
             </Button>
