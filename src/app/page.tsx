@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import type { Metadata } from "next"
 import Dashboard from "@/components/user/User"
+import { link } from "fs"
 
 export const metadata: Metadata = {
   title: "Test2Uni - IELTS, PTE, TOEFL Practice & Study Materials | Free Test Prep",
@@ -87,6 +88,7 @@ export default function HomePage() {
       modules: ["Speaking", "Writing", "Reading", "Listening"],
       questions: "3,500+",
       color: "bg-blue-500",
+      link: "/ielts",
     },
     {
       name: "PTE",
@@ -94,6 +96,7 @@ export default function HomePage() {
       modules: ["Speaking", "Writing", "Reading", "Listening"],
       questions: "4,200+",
       color: "bg-primary",
+      link:'pte-practice'
     },
     {
       name: "TOEFL",
@@ -101,6 +104,7 @@ export default function HomePage() {
       modules: ["Speaking", "Writing", "Reading", "Listening"],
       questions: "2,800+",
       color: "bg-purple-500",
+      link:"tofel-practice"
     },
   ]
 
@@ -260,7 +264,7 @@ export default function HomePage() {
                         ))}
                       </div>
                     </div>
-                    <Link href="/signup">
+                    <Link href={`/${test.link}`}>
                       <Button className="w-full">Start {test.name} Practice</Button>
                     </Link>
                   </CardContent>
