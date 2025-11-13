@@ -289,6 +289,8 @@ export default function PTEDashboard() {
     const IconComponent = module.icon
     const progressPercentage = Math.round((module.completed / module.total) * 100)
 
+
+
     return (
       <Card
         key={module.id}
@@ -325,11 +327,11 @@ export default function PTEDashboard() {
         </CardHeader>
         <CardContent className="pt-0">
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            {/* <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Clock className="w-4 h-4" />
               {module.duration}
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <div className="flex justify-between text-sm mb-2">
                 <span>Progress</span>
                 <span>
@@ -337,7 +339,7 @@ export default function PTEDashboard() {
                 </span>
               </div>
               <Progress value={progressPercentage} className="h-2" />
-            </div>
+            </div> */}
             {module.available ? (
               <Link href={`/pte/${module.id}`}>
                 <Button className="w-full" variant={progressPercentage === 100 ? "secondary" : "default"}>
@@ -395,7 +397,7 @@ export default function PTEDashboard() {
         </div>
 
         {/* Progress Overview */}
-        <Card className="mb-8">
+        {/* <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BarChart3 className="w-5 h-5" />
@@ -423,7 +425,7 @@ export default function PTEDashboard() {
               </div>
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
 
         {/* Speaking Section */}
         <div className="mb-8">
@@ -488,7 +490,7 @@ export default function PTEDashboard() {
         </div>
 
         {/* Quick Actions */}
-        <Card>
+        {/* <Card>
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
             <CardDescription>Jump into practice or review your performance</CardDescription>
@@ -515,7 +517,7 @@ export default function PTEDashboard() {
               </Button>
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   )

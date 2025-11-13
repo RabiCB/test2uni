@@ -19,14 +19,11 @@ export default async function UniversitiesPage(
 ) {
  
  const params = await searchParams
-
   const page = parseInt((params?.page as string) || "1", 10)
   const data = await hitServerApi(`/api/universities?page=${page}`)
   const universities = data?.universities ?? []
   const totalPages = data?.pagination?.totalPages ?? 1 as number
   
-
-
   return (
     <section className=" py-8">
      <div className="mb-8">
