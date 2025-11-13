@@ -22,7 +22,7 @@ export default function ReadAloudPageWrapper() {
   return (
     <QueryClientProvider client={queryClient}>
       <Suspense fallback={<LoadingFallback />}>
-        <ReadAloudContentComponent />
+        <ReadAloudContent />
       </Suspense>
     </QueryClientProvider>
   )
@@ -177,7 +177,7 @@ function ReadAloudContent() {
     }, 500)
   }
 
-  if (isLoading || showLoader) {
+  if (isLoading ) {
     return <LoadingFallback />
   }
 
