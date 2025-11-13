@@ -1,12 +1,12 @@
 import { urls } from "./constants"
 
-export const hitServerApi = async(id:string) => {
-    const data = await fetch(`${urls.localhost }${id}`)
+export const hitServerApi = async(url:string) => {
+    const response = await fetch(`${urls.localhost }${url}`)
 
   
- const res = await data.json()
+    if(!response.ok){
+        throw new Error("Failed to fetch from server API")
+    }
+ return response.json()
 
-
-
- return res
 } 

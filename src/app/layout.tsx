@@ -5,7 +5,9 @@ import Header from "@/components/Navbar/header";
 
 import { AppContextProvider } from "@/AppContext/AppContextProvider";
 import SearchModalRoot from "@/components/Modals/SearchModal";
-import { ReactQueryProvider } from "@/lib/ReactQueryProvider";
+import ReactQueryProvider from "@/lib/ReactQueryProvider";
+
+
 
 const geist = Geist({
   subsets: ["latin"],
@@ -19,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geist.className} antialiased `}>
-        <ReactQueryProvider>
+        <ReactQueryProvider  >
         <AppContextProvider>
           <Header />
           <main className="container mx-auto px-4 py-4">

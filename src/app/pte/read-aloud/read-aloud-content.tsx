@@ -2,46 +2,28 @@
 
 import { useState, useEffect, useRef } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
-import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Suspense } from "react"
-import ReadAloudContentComponent from "./read-aloud-content"
-import { urls } from "@/lib/constants"
-
-const queryClient = new QueryClient()
-
-const fetchQuestionById = async (id: number) => {
-  const res = await fetch(`${urls.server}/api/readaloud/${id}`)
-  if (!res.ok) throw new Error("Failed to fetch question")
-  return res.json()
-}
-
-export default function ReadAloudPageWrapper() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Suspense fallback={<LoadingFallback />}>
-        <ReadAloudContentComponent />
-      </Suspense>
-    </QueryClientProvider>
-  )
-}
-
-function LoadingFallback() {
-  return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-[#4CAF50] border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-muted-foreground">Loading question...</p>
-      </div>
-    </div>
-  )
-}
 
 type Stage = "preparation" | "beeping" | "recording" | "completed"
 
-function ReadAloudContent() {
+const mockQuestions: Record<number, { passage: string }> = {
+  2: {
+    passage:
+      "The Industrial Revolution marked a major turning point in human history. It began in Britain in the late 18th century and spread to other parts of Europe and North America. This period saw the transition from hand production methods to machines, new chemical manufacturing processes, and the development of machine tools.",
+  },
+  3: {
+    passage:
+      "Climate change represents one of the most significant challenges facing humanity today. Rising global temperatures are causing ice caps to melt, sea levels to rise, and weather patterns to become more extreme. Scientists agree that human activities, particularly the burning of fossil fuels, are the primary cause of recent climate change.",
+  },
+  4: {
+    passage:
+      "Artificial intelligence has transformed the way we live and work in the 21st century. From virtual assistants to self-driving cars, AI technologies are becoming increasingly integrated into our daily lives. Machine learning algorithms can now perform tasks that once required human intelligence, such as recognizing images, translating languages, and making complex decisions.",
+  },
+}
+
+export default function ReadAloudPageContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const currentId = Number.parseInt(searchParams.get("id") || "2", 10)
@@ -58,16 +40,7 @@ function ReadAloudContent() {
   const beepAudioRef = useRef<HTMLAudioElement | null>(null)
   const chunksRef = useRef<Blob[]>([])
 
-  const {
-    data: question,
-    isLoading,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: ["readAloudQuestion", currentId],
-    queryFn: () => fetchQuestionById(currentId),
-    staleTime: 5 * 60 * 1000,
-  })
+  const question = mockQuestions[currentId] || mockQuestions[2]
 
   const recordingProgress = ((40 - recordingTime) / 40) * 100
 
@@ -161,7 +134,7 @@ function ReadAloudContent() {
     if (currentId > 2) {
       setShowLoader(true)
       setTimeout(() => {
-        router.push(`/pte/read-aloud?id=${currentId - 1}`)
+        router.push(`/read-aloud?id=${currentId - 1}`)
         handleRestart()
         setShowLoader(false)
       }, 500)
@@ -171,34 +144,19 @@ function ReadAloudContent() {
   const handleNext = () => {
     setShowLoader(true)
     setTimeout(() => {
-      router.push(`/pte/read-aloud?id=${currentId + 1}`)
+      router.push(`/read-aloud?id=${currentId + 1}`)
       handleRestart()
       setShowLoader(false)
     }, 500)
   }
 
-  if (isLoading || showLoader) {
-    return <LoadingFallback />
-  }
-
-  if (isError) {
+  if (showLoader) {
     return (
-      <div className="min-h-screen bg-background">
-        <header className="border-b border-border bg-card">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center h-16">
-              <Link href="/">
-                <Button variant="ghost" size="sm" className="gap-2">
-                  <ArrowLeft className="w-4 h-4" />
-                  Back to Dashboard
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </header>
-        <main className="my-10 max-w-screen-lg mx-auto px-4">
-          <p className="text-red-500">Error: {(error as Error).message}</p>
-        </main>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[#4CAF50] border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-muted-foreground">Loading question...</p>
+        </div>
       </div>
     )
   }

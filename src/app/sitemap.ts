@@ -37,6 +37,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.5,
     },
+    {
+      url: `${baseUrl}/pte-practice`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ilets-practice`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+
+    }
   ]
   const universities = await getUniversities()
   const universityPages: MetadataRoute.Sitemap = universities?.map((university:University) => ({

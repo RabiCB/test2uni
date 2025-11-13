@@ -88,7 +88,7 @@ export default function HomePage() {
       modules: ["Speaking", "Writing", "Reading", "Listening"],
       questions: "3,500+",
       color: "bg-blue-500",
-      link: "/ielts",
+      link: "ielts-practice",
     },
     {
       name: "PTE",
