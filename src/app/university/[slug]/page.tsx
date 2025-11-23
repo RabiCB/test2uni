@@ -2,13 +2,14 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import {lexicalJsonToHtml } from '@/lib/lexicalJson'
 import { hitServerApi } from '@/lib/useServerApi'
 import { formatDateDMY } from '@/lib/utils'
 import { MapPin, Award, Users, BookmarkIcon, Clock, ExternalLink, Calendar } from 'lucide-react'
 import type { Metadata } from 'next'
 import { cache } from 'react'
 const getUniversity = cache(async (slug: string) => {
-  return hitServerApi(`/api/universities/${slug}`)
+  return hitServerApi(`universities/${slug}`)
 })
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -96,7 +97,10 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
                 <CardTitle>About the University</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground leading-relaxed">{selectedUniversity.description}</p>
+                <div dangerouslySetInnerHTML={{__html:lexicalJsonToHtml(selectedUniversity.description) || "NO Description"}}>
+
+                </div>
+             
                 <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground">
                   <span>Established: {selectedUniversity.establishedYear}</span>
                   <span>•</span>

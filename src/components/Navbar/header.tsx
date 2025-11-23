@@ -43,26 +43,26 @@ const  {OpenSearchModal,handleOpenSearchModal}=useAppContext()
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-48">
                 <DropdownMenuItem asChild>
-                  <Link href="/exam-prep?test=ielts" className="flex items-center gap-2">
+                  <Link href="/ielts-practice" className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                     IELTS Practice
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/exam-prep?test=pte" className="flex items-center gap-2">
+                  <Link href="/pte-practice" className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     PTE Practice
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/exam-prep?test=toefl" className="flex items-center gap-2">
+                  <Link href="/tofel-practice" className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                     TOEFL Practice
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/exam-prep?test=gre" className="flex items-center gap-2">
+                  <Link href="/gre-practice" className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                     GRE Practice
                   </Link>
@@ -94,6 +94,12 @@ const  {OpenSearchModal,handleOpenSearchModal}=useAppContext()
             >
               Features
             </a>
+            <Link
+              href="/ielts-practice"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              IELTS Practice
+            </Link>
            
             <Link
               href="/universities"
@@ -197,6 +203,13 @@ const  {OpenSearchModal,handleOpenSearchModal}=useAppContext()
                 >
                   Features
                 </a>
+                <Link
+                  href="/ielts-dashboard"
+                  className="block py-2 px-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  IELTS Dashboard
+                </Link>
                 <Link
                   href="/universities"
                   className="block py-2 px-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
