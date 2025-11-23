@@ -3,8 +3,8 @@ import UniversityDatabase from "@/components/university-database"
 import { hitServerApi } from "@/lib/useServerApi"
 
 import Pagination from "@/components/Pagination"
-import { PageProps } from "../../../.next/types/app/page"
 
+import { PageProps } from "../../../.next/types/app/page"
 
 
 type Props = {
@@ -20,7 +20,7 @@ export default async function UniversitiesPage(
  
  const params = await searchParams
   const page = parseInt((params?.page as string) || "1", 10)
-  const data = await hitServerApi(`/api/universities?page=${page}`)
+  const data = await hitServerApi(`universities?page=${page}`)
   const universities = data?.universities ?? []
   const totalPages = data?.pagination?.totalPages ?? 1 as number
   

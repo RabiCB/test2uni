@@ -618,25 +618,21 @@ export default function HomePage() {
               <h4 className="font-semibold mb-4">Test Preparation</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link href="/repeat-sentence" className="hover:text-foreground">
+                  <Link href="/ielts-prcatice" className="hover:text-foreground">
                     IELTS Practice
                   </Link>
                 </li>
                 <li>
-                  <Link href="/repeat-sentence" className="hover:text-foreground">
+                  <Link href="/pte/repeat-sentence" className="hover:text-foreground">
                     PTE Practice
                   </Link>
                 </li>
                 <li>
-                  <Link href="/describe-image" className="hover:text-foreground">
+                  <Link href="/pte/describe-image" className="hover:text-foreground">
                     TOEFL Practice
                   </Link>
                 </li>
-                <li>
-                  <Link href="/analytics" className="hover:text-foreground">
-                    Mock Tests
-                  </Link>
-                </li>
+                
               </ul>
             </div>
             <div>
